@@ -307,5 +307,5 @@ function onClick2(){
         context.clearRect(0,0,canW,canH);
     }
     
-    reset(600,1000);
+    reset(600,600);
 }

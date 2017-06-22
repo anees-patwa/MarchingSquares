@@ -265,14 +265,26 @@ function draw_curvature(position, x_init, y_init, x_fin, y_fin, scale, context, 
 
 var x_init = 0;
 var y_init = 0;
-var x_fin = 10;
-var y_fin = 10;
-var scale = 1;
-var grid_size = 50;
 var context_height = 600;
 var form = document.forms[0];
 var func = "f(x,y) = " + form.elements["func"].value;
 var isoval = form.elements["isoval"].value;
+var x_fin = parseFloat(form.elements["x_fin"].value);
+var y_fin = parseFloat(form.elements["y_fin"].value);
+var multiplier = parseFloat(form.elements["multiplier"].value);
+var grid_size;
+var scale = .125 / multiplier;
+
+if(y_fin >= x_fin)
+{
+    console.log("y");
+    grid_size = math.floor((context_height - 100)/y_fin);   
+}
+else if (x_fin > y_fin)
+{
+    console.log("x");
+    grid_size = math.floor((context_height-100)/x_fin)
+}
 
 //console.log(func);
 var bitmap = bitmap(scale, x_init, y_init, x_fin, y_fin, func, isoval);

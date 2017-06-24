@@ -1,7 +1,5 @@
-function onClick() 
+function graph() 
 {
-
-    
     
 function bitmap(scale, x_init, y_init, x_fin, y_fin, func, isoval) {
     var expression;
@@ -278,12 +276,9 @@ draw_curvature(assign_curvature(bitmap, scale, x_init, y_init, x_fin, y_fin), x_
 //console.log("end debug");
 }
 
-function onClick2(width, height){
-    function reset(canW, canH) {
-        var canvas = document.getElementById("canvas");
-        var context = canvas.getContext("2d");
-        context.clearRect(0,0,canW,canH);
-    }
+function clear(){
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d");
     
-    reset(width,height);
+    context.clearRect(0,0,canvas.width,canvas.height);
 }

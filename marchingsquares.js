@@ -236,11 +236,9 @@ function draw_curvature(position, x_init, y_init, x_fin, y_fin, scale, context, 
 
 var x_init = 0;
 var y_init = 0;
-var target_dots = 80.000;
-
- 
-
-var context_height = 600;
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+var context_height = canvas.height;
 var form = document.forms[0];
 var func = "f(x,y) = " + form.elements["func"].value;
 var isoval = form.elements["isoval"].value;
@@ -253,15 +251,15 @@ var scale = .125 / multiplier;
 
 if(y_fin >= x_fin)
 {
-    console.log("y");
-    grid_size = math.floor((context_height - 100)/y_fin);
+    
+    grid_size = math.floor((context_height)/y_fin);
     
     
 }
 else if (x_fin > y_fin)
 {
-    console.log("x");
-    grid_size = math.floor((context_height-100)/x_fin)
+    
+    grid_size = math.floor((context_height)/x_fin)
     
 }
 
@@ -270,8 +268,7 @@ console.log(scale);
 
 //console.log(func);
 var bitmap = bitmap(scale, x_init, y_init, x_fin, y_fin, func, isoval);
-var canvas = document.getElementById("canvas");
-var context = canvas.getContext("2d");
+
 
 
 
@@ -281,12 +278,12 @@ draw_curvature(assign_curvature(bitmap, scale, x_init, y_init, x_fin, y_fin), x_
 //console.log("end debug");
 }
 
-function onClick2(){
+function onClick2(width, height){
     function reset(canW, canH) {
         var canvas = document.getElementById("canvas");
         var context = canvas.getContext("2d");
         context.clearRect(0,0,canW,canH);
     }
     
-    reset(600,600);
+    reset(width,height);
 }
